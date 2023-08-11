@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <style>
+        div.trafficLight {
+            cursor: pointer;
+            width: 3rem;
+            height: 10rem;
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        div.light {
+            background-color: red;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div onclick="click()" class="trafficLight">
+        <div class="light" style="background-color: red;"></div>
+        <div class="light" style="background-color: gray;"></div>
+        <div class="light" style="background-color: gray;"></div>
+    </div>
+
+    <script>
+        function rellow(){
+        `<div onclick="red()" class="trafficLight">
+            <div class="light" style="background-color: red;"></div>
+            <div class="light" style="background-color: gray;"></div>
+            <div class="light" style="background-color: gray;"></div>
+        </div>`}
+        function red(){
+        `<div onclick="green()" class="trafficLight">
+            <div class="light" style="background-color: red;"></div>
+            <div class="light" style="background-color: yellow;"></div>
+            <div class="light" style="background-color: gray;"></div>
+        </div>`}
+        function yellow(){
+        `<div onclick="green()" class="trafficLight">
+            <div class="light" style="background-color: gray;"></div>
+            <div class="light" style="background-color: gray;"></div>
+            <div class="light" style="background-color: green;"></div>
+        </div>`}
+        function green(){
+        `<div onclick="rellow()" class="trafficLight">
+            <div class="light" style="background-color: gray;"></div>
+            <div class="light" style="background-color: yellow;"></div>
+            <div class="light" style="background-color: gray;"></div>
+        </div>`}
+
+        let currentSetupIndex = 0;
+        function click(){
+            currentSetupIndex = (currentSetupIndex + 1) % setups.length;
+            document.body.innerHTML = setups[currentSetupIndex];
+        }
+    </script>
+</body>
+
+</html>

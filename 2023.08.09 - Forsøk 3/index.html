@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trafikklys som skal fungere denne gangen</title>
+
+    <style>
+        div.trafficLight {
+            width: 3rem;
+            height: 10rem;
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+            padding: 1rem;
+            gap: 1rem;
+            cursor: pointer;
+        }
+  
+        div.light {
+            background-color: red;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div onclick="changeLight()" class="trafficLight" id="box">
+        <div class="light" style="background-color: red;"></div>
+        <div class="light" style="background-color: gray;"></div>
+        <div class="light" style="background-color: gray;"></div>
+    </div>
+
+    <script>
+        var lightCycle = 0;
+        let colors = [
+            ["red", "gray", "gray"],
+            ["red", "yellow", "gray"],
+            ["gray", "gray", "green"],
+            ["gray", "yellow", "gray"]
+        ]
+        function changeLight(){
+            lightCycle = (lightCycle + 1) % colors.length
+            let q = document.getElementById("box")
+            q.innerHTML = /*HTML*/`
+            <div class="light" style="background-color: ${colors[lightCycle][0]};"></div>
+            <div class="light" style="background-color: ${colors[lightCycle][1]};"></div>
+            <div class="light" style="background-color: ${colors[lightCycle][2]};"></div>
+            `
+        }
+    </script>
+</body>
+</html>
